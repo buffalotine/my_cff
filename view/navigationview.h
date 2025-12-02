@@ -12,7 +12,7 @@ public:
     explicit NavigationView(QWidget *parent = nullptr);
 
     // 构建菜单
-    void buildMenuTree(/*PEFile* peFile*/);
+    void buildMenuTree(bool isDll);
 
 signals:
     // 当菜单项点击, 向外传递点击的配置项

@@ -11,21 +11,32 @@ CONFIG += c++17
 SOURCES += \
     application.cpp \
     config/navigationconfig.cpp \
+    service/pefileservice.cpp \
+    view/dosheaderview.cpp \
+    view/fileheaderview.cpp \
     view/mainwindow.cpp \
-    view/navigationview.cpp
+    view/navigationview.cpp \
+    view/notimplementview.cpp \
+    view/ntheaderview.cpp
 
 
 HEADERS += \
     enums/navigationitemtypeenum.h \
     config/navigationconfig.h \
+    service/pefileservice.h \
+    view/dosheaderview.h \
+    view/fileheaderview.h \
     view/mainwindow.h \
     utils/logger.h \
-    view/navigationview.h
+    view/navigationview.h \
+    view/notimplementview.h \
+    view/ntheaderview.h
 
 
 
 FORMS += \
-    ui/mainwindow.ui
+    ui/mainwindow.ui \
+    ui/notimplementview.ui
 
 
 # Default rules for deployment.

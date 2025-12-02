@@ -16,12 +16,8 @@ NavigationView::NavigationView(QWidget *parent) : QTreeWidget(parent)
 
     // 连接原生点击信号到内部处理函数
     connect(this, &QTreeWidget::itemClicked, this, &NavigationView::onItemClicked);
-
-    // 初始化构建
-    buildMenuTree();
 }
-
-void NavigationView::buildMenuTree()
+void NavigationView::buildMenuTree(bool isDll)
 {
     this->clear();
 
@@ -37,7 +33,7 @@ void NavigationView::buildMenuTree()
             item->setText(0, config.getName());
             item->setIcon(0, QIcon(config.getIcon()));
 
-            // 将Enum类型存入UserRole 以便点击时识别
+            // 将Enum存入UserRole 点击时识别
             item->setData(0, Qt::UserRole, config.getType());
 
             itemMap[config.getType()] = item;
@@ -64,13 +60,12 @@ void NavigationView::buildMenuTree()
                 }
                 else
                 {
-                    // 如果找不到父亲，默认作为顶层放入
+                    // 如果找不到父亲 作为顶层放入
                     this->addTopLevelItem(currentItem);
                 }
             }
         }
 
-    // 全部展开
     this->expandAll();
 }
 
@@ -81,7 +76,7 @@ void NavigationView::onItemClicked(QTreeWidgetItem *item, int column)
 
     LOG_DEBUG(__FUNCTION__" raw controls click, column: %d", column)
 
-    // 找到原始的Config对象
+    // 原始的Config对象
     QList<NavigationConfig> allConfigs = NavigationConfig::values();
     for (const auto& config : allConfigs)
     {

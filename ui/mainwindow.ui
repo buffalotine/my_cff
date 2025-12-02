@@ -18,29 +18,37 @@
     <normaloff>:/images/images/icon/navigation/m8.ico</normaloff>:/images/images/icon/navigation/m8.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,7">
-      <item>
-       <widget class="NavigationView" name="navigationView">
-        <attribute name="headerVisible">
-         <bool>false</bool>
-        </attribute>
-        <column>
-         <property name="text">
-          <string notr="true">1</string>
-         </property>
-        </column>
-       </widget>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="subViewContainer">
-        <property name="title">
-         <string/>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QSplitter" name="mainSplitter">
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Orientation::Horizontal</enum>
+      </property>
+      <property name="opaqueResize">
+       <bool>true</bool>
+      </property>
+      <widget class="NavigationView" name="navigationView">
+       <attribute name="headerVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
         </property>
-       </widget>
-      </item>
-     </layout>
+       </column>
+      </widget>
+      <widget class="QGroupBox" name="subViewContainer">
+       <property name="title">
+        <string/>
+       </property>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -50,11 +58,48 @@
      <x>0</x>
      <y>0</y>
      <width>1231</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>📂文件(&amp;F)</string>
+    </property>
+    <addaction name="actionopen"/>
+    <addaction name="actionclose"/>
+    <addaction name="separator"/>
+    <addaction name="actionexit"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionopen">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/images/icon/menu/13.ico</normaloff>:/images/images/icon/menu/13.ico</iconset>
+   </property>
+   <property name="text">
+    <string>打开(&amp;O)</string>
+   </property>
+  </action>
+  <action name="actionclose">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/images/icon/menu/14.ico</normaloff>:/images/images/icon/menu/14.ico</iconset>
+   </property>
+   <property name="text">
+    <string>关闭(&amp;C)</string>
+   </property>
+  </action>
+  <action name="actionexit">
+   <property name="icon">
+    <iconset resource="../res.qrc">
+     <normaloff>:/images/images/icon/menu/33.ico</normaloff>:/images/images/icon/menu/33.ico</iconset>
+   </property>
+   <property name="text">
+    <string>退出(&amp;E)</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

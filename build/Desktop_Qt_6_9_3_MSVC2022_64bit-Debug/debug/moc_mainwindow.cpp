@@ -42,7 +42,10 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "handleNavigationClicked",
         "",
         "NavigationConfig",
-        "item"
+        "item",
+        "onActionOpenTriggered",
+        "onActionCloseTriggered",
+        "onActionExitTriggered"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -50,6 +53,12 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void(NavigationConfig)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
+        // Slot 'onActionOpenTriggered'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onActionCloseTriggered'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onActionExitTriggered'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -74,6 +83,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->handleNavigationClicked((*reinterpret_cast< std::add_pointer_t<NavigationConfig>>(_a[1]))); break;
+        case 1: _t->onActionOpenTriggered(); break;
+        case 2: _t->onActionCloseTriggered(); break;
+        case 3: _t->onActionExitTriggered(); break;
         default: ;
         }
     }
@@ -98,14 +110,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }

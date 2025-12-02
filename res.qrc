@@ -1,5 +1,19 @@
 <RCC>
     <qresource prefix="/images">
         <file>images/icon/navigation/m8.ico</file>
+        <file>images/error_01.png</file>
+        <file>images/icon/navigation/m1.ico</file>
+        <file>images/icon/navigation/m2.ico</file>
+        <file>images/icon/navigation/m3.ico</file>
+        <file>images/icon/navigation/m4.ico</file>
+        <file>images/icon/navigation/m5.ico</file>
+        <file>images/icon/navigation/m6.ico</file>
+        <file>images/icon/navigation/m7.ico</file>
+        <file>images/icon/navigation/m9.ico</file>
+        <file>images/icon/navigation/m10.ico</file>
+        <file>images/icon/menu/13.ico</file>
+        <file>images/icon/menu/33.ico</file>
+        <file>images/icon/menu/52.ico</file>
+        <file>images/icon/menu/14.ico</file>
     </qresource>
 </RCC>

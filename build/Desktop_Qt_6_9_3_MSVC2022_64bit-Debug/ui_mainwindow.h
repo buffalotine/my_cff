@@ -10,14 +10,16 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include "view/navigationview.h"
@@ -27,12 +29,16 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionopen;
+    QAction *actionclose;
+    QAction *actionexit;
     QWidget *centralWidget;
-    QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
+    QSplitter *mainSplitter;
     NavigationView *navigationView;
     QGroupBox *subViewContainer;
     QMenuBar *menubar;
+    QMenu *menu;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -43,39 +49,60 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/images/images/icon/navigation/m8.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         MainWindow->setWindowIcon(icon);
+        actionopen = new QAction(MainWindow);
+        actionopen->setObjectName("actionopen");
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/images/images/icon/menu/13.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionopen->setIcon(icon1);
+        actionclose = new QAction(MainWindow);
+        actionclose->setObjectName("actionclose");
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/images/icon/menu/14.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionclose->setIcon(icon2);
+        actionexit = new QAction(MainWindow);
+        actionexit->setObjectName("actionexit");
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/images/images/icon/menu/33.ico"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        actionexit->setIcon(icon3);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
-        gridLayout = new QGridLayout(centralWidget);
-        gridLayout->setObjectName("gridLayout");
-        horizontalLayout = new QHBoxLayout();
+        horizontalLayout = new QHBoxLayout(centralWidget);
         horizontalLayout->setObjectName("horizontalLayout");
-        navigationView = new NavigationView(centralWidget);
+        mainSplitter = new QSplitter(centralWidget);
+        mainSplitter->setObjectName("mainSplitter");
+        mainSplitter->setLineWidth(1);
+        mainSplitter->setMidLineWidth(0);
+        mainSplitter->setOrientation(Qt::Orientation::Horizontal);
+        mainSplitter->setOpaqueResize(true);
+        navigationView = new NavigationView(mainSplitter);
         QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         navigationView->setHeaderItem(__qtreewidgetitem);
         navigationView->setObjectName("navigationView");
+        mainSplitter->addWidget(navigationView);
         navigationView->header()->setVisible(false);
-
-        horizontalLayout->addWidget(navigationView);
-
-        subViewContainer = new QGroupBox(centralWidget);
+        subViewContainer = new QGroupBox(mainSplitter);
         subViewContainer->setObjectName("subViewContainer");
+        mainSplitter->addWidget(subViewContainer);
 
-        horizontalLayout->addWidget(subViewContainer);
-
-        horizontalLayout->setStretch(0, 1);
-        horizontalLayout->setStretch(1, 7);
-
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
+        horizontalLayout->addWidget(mainSplitter);
 
         MainWindow->setCentralWidget(centralWidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1231, 21));
+        menubar->setGeometry(QRect(0, 0, 1231, 22));
+        menu = new QMenu(menubar);
+        menu->setObjectName("menu");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menu->menuAction());
+        menu->addAction(actionopen);
+        menu->addAction(actionclose);
+        menu->addSeparator();
+        menu->addAction(actionexit);
 
         retranslateUi(MainWindow);
 
@@ -85,7 +112,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MY CFF EXPLORER", nullptr));
+        actionopen->setText(QCoreApplication::translate("MainWindow", "\346\211\223\345\274\200(&O)", nullptr));
+        actionclose->setText(QCoreApplication::translate("MainWindow", "\345\205\263\351\227\255(&C)", nullptr));
+        actionexit->setText(QCoreApplication::translate("MainWindow", "\351\200\200\345\207\272(&E)", nullptr));
         subViewContainer->setTitle(QString());
+        menu->setTitle(QCoreApplication::translate("MainWindow", "\360\237\223\202\346\226\207\344\273\266(&F)", nullptr));
     } // retranslateUi
 
 };
