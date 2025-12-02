@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/icon/navigation/m8.ico</file>
+    </qresource>
+</RCC>
