@@ -85,6 +85,9 @@ bool FileHeaderView::initTableHeader(int nColumn)
     // 允许双击或按回车键编辑
     this->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
 
+    // 允许交替行颜色
+    this->setAlternatingRowColors(true);
+
     return true;
 }
 

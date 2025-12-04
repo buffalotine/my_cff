@@ -12,6 +12,7 @@ SOURCES += \
     application.cpp \
     config/navigationconfig.cpp \
     service/pefileservice.cpp \
+    view/addressconverterview.cpp \
     view/dosheaderview.cpp \
     view/fileheaderview.cpp \
     view/hexeditorview.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     enums/navigationitemtypeenum.h \
     config/navigationconfig.h \
     service/pefileservice.h \
+    view/addressconverterview.h \
     view/dosheaderview.h \
     view/fileheaderview.h \
     view/hexeditorview.h \
@@ -45,7 +47,8 @@ FORMS += \
     ui/notimplementview.ui \
     ui/hexeditorview.ui \
     ui/sectionheaderview.ui \
-    ui/sectionheaderview.ui
+    ui/sectionheaderview.ui \
+    ui/addressconverterview.ui
 
 
 # Default rules for deployment.

@@ -74,7 +74,7 @@ void NavigationView::onItemClicked(QTreeWidgetItem *item, int column)
     // 取出枚举值
     int type = item->data(0, Qt::UserRole).toInt();
 
-    LOG_DEBUG(__FUNCTION__" raw controls click, column: %d", column)
+    LOG_DEBUG(__FUNCTION__" raw controls click, column: %d, type: %d", column, type);
 
     // 原始的Config对象
     QList<NavigationConfig> allConfigs = NavigationConfig::values();

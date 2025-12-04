@@ -58,7 +58,6 @@ bool OptionalHeaderView::initTableHeader(int nColumn)
     this->m_model = model;
     this->setModel(model);
 
-
     // 水平和垂直都设置为expand
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -87,6 +86,9 @@ bool OptionalHeaderView::initTableHeader(int nColumn)
 
     // 允许双击或按回车键编辑
     this->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+
+    // 允许交替行颜色
+    this->setAlternatingRowColors(true);
 
     return true;
 }

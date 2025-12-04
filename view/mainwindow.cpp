@@ -4,12 +4,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "utils/logger.h"
+#include "view/notimplementview.h"
 #include "view/dosheaderview.h"
 #include "view/fileheaderview.h"
 #include "view/optionalheaderview.h"
 #include "view/ntheaderview.h"
 #include "view/sectionheaderview.h"
-#include "view/notimplementview.h"
+#include "view/hexeditorview.h"
+#include "view/addressconverterview.h"
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -238,6 +240,37 @@ void MainWindow::handleNavigationClicked(NavigationConfig item)
         case PAGE_SECTION_HEADERS:
         {
             auto newViewTemp = new SectionHeaderView();
+
+            // 连接数据更新信号
+            connect(newViewTemp, &SectionHeaderView::reqUpdateData, [this, newViewTemp]()
+                    {
+                        // 1. 从 Service 获取节表数据
+                        QVector<PeSectionData> sections = peFileService.getSectionHeadersData();
+
+                        // 2. 清空表格
+                        newViewTemp->clearTable();
+
+                        // 3. 填充每一行
+                        for (const auto& sec : sections)
+                        {
+                            newViewTemp->addData(sec);
+                        }
+                    });
+
+            newView = newViewTemp;
+            break;
+        }
+
+        case PAGE_ADDRESS_CONVERTER:
+        {
+            auto newViewTemp = new AddressConverterView();
+            newView = newViewTemp;
+            break;
+        }
+
+        case PAGE_HEX_EDITOR:
+        {
+            auto newViewTemp = new HexEditorView();
             newView = newViewTemp;
             break;
         }
